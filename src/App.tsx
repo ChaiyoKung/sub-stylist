@@ -1,8 +1,10 @@
+import { Text, Title } from '@mantine/core';
+
 export function App() {
   return (
     <>
-      <h1>Hello World</h1>
-      <p>
+      <Title>Hello World</Title>
+      <Text>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus
         aspernatur cupiditate recusandae quas, modi sunt laboriosam odit tempora
         reprehenderit non quisquam nihil quo. Placeat numquam voluptate veniam
@@ -15,7 +17,7 @@ export function App() {
         molestias ipsum aperiam accusantium eaque velit veritatis ullam illum
         quaerat, ipsam quidem obcaecati! Ea placeat eveniet deserunt consectetur
         perspiciatis porro iusto!
-      </p>
+      </Text>
     </>
   );
 }
