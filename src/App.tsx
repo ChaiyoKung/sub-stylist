@@ -1,24 +1,46 @@
-import { Text, Title } from '@mantine/core';
+import { ColorPicker, InputLabel, Stack } from '@mantine/core';
+import { useCallback, useState } from 'react';
+import { Style } from './types';
+
+const defaultStyle: Style = {
+  textColor: 'rgba(255, 255, 255, 1)',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+};
 
 export function App() {
+  const [style, setStyle] = useState<Style>(defaultStyle);
+
+  const handleChangeTextColor = useCallback((value: string) => {
+    setStyle((prev) => ({ ...prev, textColor: value }));
+  }, []);
+
+  const handleChangeBgColor = useCallback((value: string) => {
+    setStyle((prev) => ({ ...prev, backgroundColor: value }));
+  }, []);
+
   return (
-    <>
-      <Title>Hello World</Title>
-      <Text>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus
-        aspernatur cupiditate recusandae quas, modi sunt laboriosam odit tempora
-        reprehenderit non quisquam nihil quo. Placeat numquam voluptate veniam
-        consequuntur ipsam officia vero ipsa eligendi cum ullam, nam cumque ut
-        esse aliquid quisquam delectus odit at est nobis, unde labore?
-        Perferendis asperiores maiores accusamus, consequatur fugiat commodi
-        architecto, aliquam sunt harum molestias excepturi magnam reiciendis
-        minima blanditiis, voluptatibus nobis temporibus accusantium cupiditate.
-        Nesciunt, aliquid amet nobis, rem enim voluptatum molestiae doloribus
-        molestias ipsum aperiam accusantium eaque velit veritatis ullam illum
-        quaerat, ipsam quidem obcaecati! Ea placeat eveniet deserunt consectetur
-        perspiciatis porro iusto!
-      </Text>
-    </>
+    <Stack miw={232} p="md">
+      <Stack gap="xs">
+        <InputLabel htmlFor="text-color-picker">Text Color</InputLabel>
+        <ColorPicker
+          id="text-color-picker"
+          format="rgba"
+          value={style.textColor}
+          onChange={handleChangeTextColor}
+        />
+      </Stack>
+      <Stack gap="xs">
+        <InputLabel htmlFor="background-color-picker">
+          Background Color
+        </InputLabel>
+        <ColorPicker
+          id="background-color-picker"
+          format="rgba"
+          value={style.backgroundColor}
+          onChange={handleChangeBgColor}
+        />
+      </Stack>
+    </Stack>
   );
 }
 
