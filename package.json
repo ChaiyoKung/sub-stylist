@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:watch": "nodemon --watch \"./src/**/*\" -e ts,tsx --exec \"npm run build\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write ./src"
   },
   "dependencies": {
     "@mantine/core": "^7.2.0",
