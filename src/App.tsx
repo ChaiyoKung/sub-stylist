@@ -1,7 +1,8 @@
 import { Button, ColorPicker, InputLabel, Stack } from '@mantine/core';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Style } from './types';
 import { IoRefresh } from 'react-icons/io5';
+import { useChromeSyncStorageState } from './hooks';
 
 const mantinePaddingMd: number = 16;
 const colorPickerWidth: number = 200;
@@ -14,7 +15,7 @@ const defaultStyle: Style = {
 };
 
 export function App() {
-  const [style, setStyle] = useState<Style>(defaultStyle);
+  const [style, setStyle] = useChromeSyncStorageState<Style>('style', defaultStyle);
 
   const handleChangeTextColor = useCallback((value: string) => {
     setStyle((prev) => ({ ...prev, textColor: value }));
