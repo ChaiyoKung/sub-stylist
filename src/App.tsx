@@ -2,6 +2,11 @@ import { ColorPicker, InputLabel, Stack } from '@mantine/core';
 import { useCallback, useState } from 'react';
 import { Style } from './types';
 
+const mantinePaddingMd: number = 16;
+const colorPickerWidth: number = 200;
+const containerMinWidth: number =
+  mantinePaddingMd + colorPickerWidth + mantinePaddingMd;
+
 const defaultStyle: Style = {
   textColor: 'rgba(255, 255, 255, 1)',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -19,7 +24,7 @@ export function App() {
   }, []);
 
   return (
-    <Stack miw={232} p="md">
+    <Stack miw={containerMinWidth} p="md">
       <Stack gap="xs">
         <InputLabel htmlFor="text-color-picker">Text Color</InputLabel>
         <ColorPicker
