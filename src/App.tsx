@@ -1,5 +1,5 @@
 import { ColorPicker, InputLabel, Stack } from '@mantine/core';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Style } from './types';
 
 const mantinePaddingMd: number = 16;
@@ -21,6 +21,36 @@ export function App() {
   const handleChangeBgColor = useCallback((value: string) => {
     setStyle((prev) => ({ ...prev, backgroundColor: value }));
   }, []);
+
+  useEffect(() => {
+    const applyStyle = async () => {
+      const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+
+      const activeTab = tabs[0];
+      if (!activeTab.id) {
+        console.error('active tab id is none');
+        return;
+      }
+      console.debug('activeTab:', activeTab);
+
+      let css: string = '';
+      const isNetflix = activeTab.url?.startsWith('https://www.netflix.com/watch/');
+      if (isNetflix) {
+        css = `
+          .player-timedtext > .player-timedtext-text-container > span > span {
+            color: ${style.textColor} !important;
+            background-color: ${style.backgroundColor} !important;
+          }
+        `;
+      }
+      await chrome.scripting.insertCSS({
+        target: { tabId: activeTab.id },
+        css: css,
+      });
+    };
+
+    applyStyle();
+  }, [style]);
 
   return (
     <Stack miw={containerMinWidth} p="md">
