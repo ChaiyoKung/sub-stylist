@@ -4,8 +4,7 @@ import { Style } from './types';
 
 const mantinePaddingMd: number = 16;
 const colorPickerWidth: number = 200;
-const containerMinWidth: number =
-  mantinePaddingMd + colorPickerWidth + mantinePaddingMd;
+const containerMinWidth: number = mantinePaddingMd + colorPickerWidth + mantinePaddingMd;
 
 const defaultStyle: Style = {
   textColor: 'rgba(255, 255, 255, 1)',
@@ -27,17 +26,10 @@ export function App() {
     <Stack miw={containerMinWidth} p="md">
       <Stack gap="xs">
         <InputLabel htmlFor="text-color-picker">Text Color</InputLabel>
-        <ColorPicker
-          id="text-color-picker"
-          format="rgba"
-          value={style.textColor}
-          onChange={handleChangeTextColor}
-        />
+        <ColorPicker id="text-color-picker" format="rgba" value={style.textColor} onChange={handleChangeTextColor} />
       </Stack>
       <Stack gap="xs">
-        <InputLabel htmlFor="background-color-picker">
-          Background Color
-        </InputLabel>
+        <InputLabel htmlFor="background-color-picker">Background Color</InputLabel>
         <ColorPicker
           id="background-color-picker"
           format="rgba"
