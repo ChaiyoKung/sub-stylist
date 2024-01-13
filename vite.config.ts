@@ -8,6 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         popup: 'popup.html',
+        'service-worker': './src/service-worker.ts',
       },
 
       // build without hash
