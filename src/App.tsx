@@ -1,10 +1,12 @@
-import { ColorPicker, InputLabel, Stack } from '@mantine/core';
+import { Button, ColorPicker, InputLabel, Stack } from '@mantine/core';
 import { useCallback, useEffect, useState } from 'react';
 import { Style } from './types';
+import { IoRefresh } from 'react-icons/io5';
 
 const mantinePaddingMd: number = 16;
 const colorPickerWidth: number = 200;
 const containerMinWidth: number = mantinePaddingMd + colorPickerWidth + mantinePaddingMd;
+const defaultIconSize = 18;
 
 const defaultStyle: Style = {
   textColor: 'rgba(255, 255, 255, 1)',
@@ -20,6 +22,10 @@ export function App() {
 
   const handleChangeBgColor = useCallback((value: string) => {
     setStyle((prev) => ({ ...prev, backgroundColor: value }));
+  }, []);
+
+  const handleClickReset = useCallback(() => {
+    setStyle(defaultStyle);
   }, []);
 
   useEffect(() => {
@@ -66,6 +72,11 @@ export function App() {
           value={style.backgroundColor}
           onChange={handleChangeBgColor}
         />
+      </Stack>
+      <Stack>
+        <Button leftSection={<IoRefresh size={defaultIconSize} />} onClick={handleClickReset}>
+          Reset
+        </Button>
       </Stack>
     </Stack>
   );
