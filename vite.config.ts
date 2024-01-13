@@ -7,7 +7,15 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        app: 'popup.html',
+        popup: 'popup.html',
+      },
+
+      // build without hash
+      // https://github.com/vitejs/vite/issues/378#issuecomment-768816653
+      output: {
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`,
       },
     },
   },
