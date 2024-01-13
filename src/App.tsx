@@ -37,7 +37,6 @@ export function App() {
         console.error('active tab id is none');
         return;
       }
-      console.debug('activeTab:', activeTab);
 
       let css: string = '';
       const isNetflix = activeTab.url?.startsWith('https://www.netflix.com/watch/');
