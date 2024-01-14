@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SubStylist",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Customize subtitles for a personalized look on top platforms, enhancing your viewing experience",
   "author": "chaiyo.thai123@gmail.com",
   "permissions": ["activeTab", "scripting", "storage"],
