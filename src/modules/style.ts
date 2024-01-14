@@ -1,7 +1,11 @@
-export interface Style {
-  textColor: string;
-  backgroundColor: string;
-}
+import { z } from 'zod';
+
+export const styleSchema = z.object({
+  textColor: z.string(),
+  backgroundColor: z.string(),
+});
+
+export type Style = z.infer<typeof styleSchema>;
 
 export const styleStorageKey: string = 'style';
 
