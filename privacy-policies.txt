@@ -1,0 +1,50 @@
+Privacy Policy for SubStylist
+
+Effective Date: 2023/01/14
+
+Thank you for using SubStylist ("Extension"). This Privacy Policy explains how we collect, use, and protect information when you use the Extension.
+
+1. Information We Collect:
+
+1.1 Extension Data:
+
+We do not collect any personal information from users of the Extension.
+The Extension does not store or transmit any user data to external servers.
+
+1.2 Usage Data:
+
+The Extension not collect usage data
+
+3.1 Storage:
+
+The Extension does not store any user data locally or remotely.
+
+3.2 Security Measures:
+
+We take reasonable measures to ensure the security of the Extension and protect it from unauthorized access or disclosure.
+
+4. Open Source and Transparency:
+
+4.1 Open Source:
+
+The Extension is open source, and its source code is available for review on https://github.com/ChaiyoKung/sub-stylist. We encourage users and developers to inspect and contribute to the code. 
+
+5. Changes to this Privacy Policy:
+
+5.1 Updates:
+
+This Privacy Policy may be updated from time to time. Users will be notified of any material changes. 
+
+6. Contact Us:
+
+6.1 Questions or Concerns:
+
+If you have any questions or concerns regarding this Privacy Policy or the Extension, please contact us at chaiyo.thai123@gmail.com.
+
+7. Consent:
+
+7.1 By using the Extension, you consent to the terms of this Privacy Policy.
+
+This Privacy Policy is subject to change. It is your responsibility to review this policy periodically for any updates. Continued use of the Extension after any changes constitute your acceptance of those changes.
+
+Thank you for using SubStylist!
