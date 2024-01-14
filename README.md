@@ -16,7 +16,7 @@ Google chrome extension that **enhance your streaming experience on popular plat
    # Option 1 (Recommend)
    pnpm run build:watch
 
-   # Option 2 (When develop popup ui only)
+   # Option 2 (When develop popup ui only, go to http://localhost:5173/popup.html)
    pnpm run dev
    ```
 
