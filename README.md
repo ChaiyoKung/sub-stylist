@@ -4,6 +4,11 @@
 
 Google chrome extension that **enhance your streaming experience on popular platforms by easily customize the appearance of subtitles to match your preferences and improve your viewing experience**
 
+## Demo
+
+![Alt text](docs/images/promote-1.png)
+![Alt text](docs/images/promote-2.png)
+
 ## Getting Started
 
 1. Install dependencies (Recommand `pnpm`)
