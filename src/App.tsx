@@ -2,7 +2,16 @@ import { Button, ColorPicker, InputLabel, Stack, Switch } from '@mantine/core';
 import { useCallback, useEffect } from 'react';
 import { IoRefresh } from 'react-icons/io5';
 import { useChromeSyncStorageState } from './hooks';
-import { Style, defaultStyle, applyStyle, styleStorageKey, isOnStorageKey, defaultIsOn, IsOn } from './modules';
+import {
+  Style,
+  defaultStyle,
+  applyStyle,
+  styleStorageKey,
+  isOnStorageKey,
+  defaultIsOn,
+  IsOn,
+  removeStyle,
+} from './modules';
 
 const mantinePaddingMd: number = 16;
 const colorPickerWidth: number = 200;
@@ -41,6 +50,8 @@ export function App() {
   useEffect(() => {
     if (isOn) {
       applyStyle(style);
+    } else {
+      removeStyle(style);
     }
   }, [isOn, style]);
 
