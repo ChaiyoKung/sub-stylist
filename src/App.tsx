@@ -12,17 +12,23 @@ const defaultIconSize = 18;
 export function App() {
   const [style, setStyle] = useChromeSyncStorageState<Style>(styleStorageKey, defaultStyle);
 
-  const handleChangeTextColor = useCallback((value: string) => {
-    setStyle((prev) => ({ ...prev, textColor: value }));
-  }, []);
+  const handleChangeTextColor = useCallback(
+    (value: string) => {
+      setStyle((prev) => ({ ...prev, textColor: value }));
+    },
+    [setStyle]
+  );
 
-  const handleChangeBgColor = useCallback((value: string) => {
-    setStyle((prev) => ({ ...prev, backgroundColor: value }));
-  }, []);
+  const handleChangeBgColor = useCallback(
+    (value: string) => {
+      setStyle((prev) => ({ ...prev, backgroundColor: value }));
+    },
+    [setStyle]
+  );
 
   const handleClickReset = useCallback(() => {
     setStyle(defaultStyle);
-  }, []);
+  }, [setStyle]);
 
   useEffect(() => {
     applyStyle(style);
