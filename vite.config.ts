@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        popup: 'popup.html',
+        popup: 'index.html',
         'service-worker': './src/service-worker.ts',
       },
 
