@@ -2,7 +2,7 @@ import { Button, ColorPicker, InputLabel, Stack, Switch } from '@mantine/core';
 import { useCallback, useEffect } from 'react';
 import { IoRefresh } from 'react-icons/io5';
 import { useChromeSyncStorageState } from './hooks';
-import { Style, defaultStyle, applyStyle, styleStorageKey, isOnStorageKey, defaultIsOn } from './modules';
+import { Style, defaultStyle, applyStyle, styleStorageKey, isOnStorageKey, defaultIsOn, IsOn } from './modules';
 
 const mantinePaddingMd: number = 16;
 const colorPickerWidth: number = 200;
@@ -10,7 +10,7 @@ const containerMinWidth: number = mantinePaddingMd + colorPickerWidth + mantineP
 const defaultIconSize = 18;
 
 export function App() {
-  const [isOn, setIsOn] = useChromeSyncStorageState<boolean>(isOnStorageKey, defaultIsOn);
+  const [isOn, setIsOn] = useChromeSyncStorageState<IsOn>(isOnStorageKey, defaultIsOn);
   const [style, setStyle] = useChromeSyncStorageState<Style>(styleStorageKey, defaultStyle);
 
   const handleChangeOnOff = useCallback(
