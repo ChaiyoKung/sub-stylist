@@ -47,12 +47,15 @@ export async function applyStyle(style: Style) {
   }
 
   const css = getPlatformOverrideCss(activeTab.url, style);
-  if (css) {
-    await chrome.scripting.insertCSS({
-      target: { tabId: activeTab.id },
-      css: css,
-    });
+  if (!css) {
+    console.error('this platform not support');
+    return;
   }
+
+  await chrome.scripting.insertCSS({
+    target: { tabId: activeTab.id },
+    css: css,
+  });
 }
 
 export async function removeStyle(style: Style) {
@@ -69,10 +72,13 @@ export async function removeStyle(style: Style) {
   }
 
   const css = getPlatformOverrideCss(activeTab.url, style);
-  if (css) {
-    await chrome.scripting.removeCSS({
-      target: { tabId: activeTab.id },
-      css: css,
-    });
+  if (!css) {
+    console.error('this platform not support');
+    return;
   }
+
+  await chrome.scripting.removeCSS({
+    target: { tabId: activeTab.id },
+    css: css,
+  });
 }
