@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { getActiveTab } from '../libs';
 
 export const styleSchema = z.object({
   textColor: z.string(),
@@ -15,8 +16,7 @@ export const defaultStyle: Style = {
 };
 
 export async function applyStyle(style: Style) {
-  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-  const activeTab = tabs[0];
+  const activeTab = await getActiveTab();
   if (!activeTab.id) {
     console.error("don't have active tab id");
     return;
@@ -49,8 +49,7 @@ export async function applyStyle(style: Style) {
 }
 
 export async function removeStyle(style: Style) {
-  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-  const activeTab = tabs[0];
+  const activeTab = await getActiveTab();
   if (!activeTab.id) {
     console.error("don't have active tab id");
     return;
