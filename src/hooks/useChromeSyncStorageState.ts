@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useDebounce } from './useDebounce';
 
 export function useChromeSyncStorageState<S>(
   key: string,
   initialState: S | (() => S)
-): [S, React.Dispatch<React.SetStateAction<S>>] {
+): [S, Dispatch<SetStateAction<S>>] {
   const [state, setState] = useState(initialState);
+  const debouncedState = useDebounce(state, 200);
   const isFirstLoadRef = useRef<boolean>(true);
 
   useEffect(() => {
@@ -22,13 +24,13 @@ export function useChromeSyncStorageState<S>(
 
   useEffect(() => {
     const saveState = async () => {
-      await chrome.storage.sync.set({ [key]: state });
+      await chrome.storage.sync.set({ [key]: debouncedState });
     };
 
     if (!isFirstLoadRef.current) {
       saveState();
     }
-  }, [key, state]);
+  }, [debouncedState, key]);
 
   return [state, setState];
 }
