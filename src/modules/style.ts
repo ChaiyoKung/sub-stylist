@@ -15,25 +15,8 @@ export const defaultStyle: Style = {
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
 };
 
-export function getPlatformOverrideCss(url: string, style: Style) {
-  //
-  // Netflix
-  //
-  if (url.startsWith('https://www.netflix.com/watch/')) {
-    return `
-      .player-timedtext > .player-timedtext-text-container > span > span {
-        color: ${style.textColor} !important;
-        background-color: ${style.backgroundColor} !important;
-      }
-    `;
-  }
-
-  //
-  // Other will append below
-  //
-}
-
-export async function applyStyle(style: Style) {
+export async function sendChangeStyleMessage(isOn: boolean, style: Style) {
+  console.log('send "changeStyle" message');
   const activeTab = await getActiveTab();
 
   if (!activeTab.id) {
@@ -41,44 +24,5 @@ export async function applyStyle(style: Style) {
     return;
   }
 
-  if (!activeTab.url) {
-    console.error("don't have active tab url");
-    return;
-  }
-
-  const css = getPlatformOverrideCss(activeTab.url, style);
-  if (!css) {
-    console.error('this platform not support');
-    return;
-  }
-
-  await chrome.scripting.insertCSS({
-    target: { tabId: activeTab.id },
-    css: css,
-  });
-}
-
-export async function removeStyle(style: Style) {
-  const activeTab = await getActiveTab();
-
-  if (!activeTab.id) {
-    console.error("don't have active tab id");
-    return;
-  }
-
-  if (!activeTab.url) {
-    console.error("don't have active tab url");
-    return;
-  }
-
-  const css = getPlatformOverrideCss(activeTab.url, style);
-  if (!css) {
-    console.error('this platform not support');
-    return;
-  }
-
-  await chrome.scripting.removeCSS({
-    target: { tabId: activeTab.id },
-    css: css,
-  });
+  await chrome.tabs.sendMessage(activeTab.id, { action: 'changeStyle', payload: { isOn, style } });
 }
