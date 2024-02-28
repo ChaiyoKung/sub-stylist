@@ -1,16 +1,15 @@
 import { Button, ColorPicker, InputLabel, Stack, Switch } from '@mantine/core';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { IoRefresh } from 'react-icons/io5';
 import { useChromeSyncStorageState } from './hooks';
 import {
   Style,
   defaultStyle,
-  applyStyle,
   styleStorageKey,
   isOnStorageKey,
   defaultIsOn,
   IsOn,
-  removeStyle,
+  sendChangeStyleMessage,
 } from './modules';
 
 const mantinePaddingMd: number = 16;
@@ -24,36 +23,42 @@ export function App() {
 
   const handleChangeOnOff = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsOn(e.currentTarget.checked);
+      setIsOn(() => {
+        const checked = e.target.checked;
+        sendChangeStyleMessage(checked, style);
+        return checked;
+      });
     },
-    [setIsOn]
+    [setIsOn, style]
+  );
+
+  const handleChangeColor = useCallback(
+    (property: keyof Style, value: string) => {
+      setStyle((prev) => {
+        const style = { ...prev, [property]: value };
+        sendChangeStyleMessage(isOn, style);
+        return style;
+      });
+    },
+    [isOn, setStyle]
   );
 
   const handleChangeTextColor = useCallback(
-    (value: string) => {
-      setStyle((prev) => ({ ...prev, textColor: value }));
-    },
-    [setStyle]
+    (value: string) => handleChangeColor('textColor', value),
+    [handleChangeColor]
   );
 
   const handleChangeBgColor = useCallback(
-    (value: string) => {
-      setStyle((prev) => ({ ...prev, backgroundColor: value }));
-    },
-    [setStyle]
+    (value: string) => handleChangeColor('backgroundColor', value),
+    [handleChangeColor]
   );
 
   const handleClickReset = useCallback(() => {
-    setStyle(defaultStyle);
-  }, [setStyle]);
-
-  useEffect(() => {
-    if (isOn) {
-      applyStyle(style);
-    } else {
-      removeStyle(style);
-    }
-  }, [isOn, style]);
+    setStyle(() => {
+      sendChangeStyleMessage(isOn, defaultStyle);
+      return defaultStyle;
+    });
+  }, [isOn, setStyle]);
 
   return (
     <Stack miw={containerMinWidth} p="md">

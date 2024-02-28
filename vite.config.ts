@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         popup: 'popup.html',
         'service-worker': './src/service-worker.ts',
+        'content-scripts/netflix': './src/content-scripts/netflix.ts',
       },
 
       // build without hash
