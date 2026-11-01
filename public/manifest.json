@@ -5,7 +5,7 @@
   "description": "Customize subtitles for a personalized look on top platforms, enhancing your viewing experience",
   "author": "chaiyo.thai123@gmail.com",
   "permissions": ["activeTab", "scripting", "storage"],
-  "host_permissions": ["https://www.netflix.com/watch/*"],
+  "host_permissions": ["https://www.netflix.com/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -26,7 +26,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.netflix.com/watch/*"],
+      "matches": ["https://www.netflix.com/*"],
       "js": ["assets/content-scripts/netflix.js"]
     }
   ]
