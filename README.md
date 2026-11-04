@@ -4,6 +4,9 @@
 
 Google chrome extension that **enhance your streaming experience on popular platforms by easily customize the appearance of subtitles to match your preferences and improve your viewing experience**
 
+- Supported now: Netflix
+- Coming soon: other streaming platforms
+
 ## Demo
 
 ![Alt text](docs/images/promote-1.png)
