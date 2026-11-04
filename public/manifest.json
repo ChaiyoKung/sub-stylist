@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "SubStylist",
   "version": "1.2.2",
-  "description": "Customize subtitles for a personalized look on top platforms, enhancing your viewing experience",
+  "description": "Customize subtitles for a personalized look on top platforms, enhancing your viewing experience. Netflix now, more coming soon.",
   "author": "chaiyo.thai123@gmail.com",
   "permissions": ["activeTab", "storage"],
   "host_permissions": ["https://www.netflix.com/*"],
