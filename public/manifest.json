@@ -4,7 +4,7 @@
   "version": "1.2.2",
   "description": "Customize subtitles for a personalized look on top platforms, enhancing your viewing experience",
   "author": "chaiyo.thai123@gmail.com",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": ["activeTab", "storage"],
   "host_permissions": ["https://www.netflix.com/*"],
   "action": {
     "default_popup": "popup.html",
