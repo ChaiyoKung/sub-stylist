@@ -3,3 +3,7 @@ export async function getActiveTab() {
   const activeTab = tabs[0];
   return activeTab;
 }
+
+export function getAppVersion() {
+  return chrome.runtime.getManifest().version;
+}
