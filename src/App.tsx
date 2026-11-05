@@ -1,7 +1,8 @@
-import { Button, ColorPicker, InputLabel, Stack, Switch } from '@mantine/core';
+import { Button, ColorPicker, Flex, Group, InputLabel, Stack, Switch, Text } from '@mantine/core';
 import { useCallback } from 'react';
 import { IoRefresh } from 'react-icons/io5';
 import { useChromeSyncStorageState } from './hooks';
+import { getAppName, getAppVersion } from './libs';
 import {
   Style,
   defaultStyle,
@@ -16,6 +17,8 @@ const mantinePaddingMd: number = 16;
 const colorPickerWidth: number = 200;
 const containerMinWidth: number = mantinePaddingMd + colorPickerWidth + mantinePaddingMd;
 const defaultIconSize = 18;
+const appName: string = getAppName();
+const appVersion: string = getAppVersion();
 
 export function App() {
   const [isOn, setIsOn] = useChromeSyncStorageState<IsOn>(isOnStorageKey, defaultIsOn);
@@ -62,9 +65,17 @@ export function App() {
 
   return (
     <Stack miw={containerMinWidth} p="md">
-      <Stack>
+      <Group justify="space-between" align="center">
         <Switch onLabel="On" offLabel="Off" color="green" size="md" checked={isOn} onChange={handleChangeOnOff} />
-      </Stack>
+        <Flex direction="column" align="end">
+          <Text size="sm" c="dimmed">
+            {appName}
+          </Text>
+          <Text size="xs" c="dimmed">
+            v{appVersion}
+          </Text>
+        </Flex>
+      </Group>
       <Stack gap="xs">
         <InputLabel htmlFor="text-color-picker">Text Color</InputLabel>
         <ColorPicker id="text-color-picker" format="rgba" value={style.textColor} onChange={handleChangeTextColor} />
