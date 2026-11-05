@@ -4,6 +4,10 @@ export async function getActiveTab() {
   return activeTab;
 }
 
+export function getAppName() {
+  return chrome.runtime.getManifest().name;
+}
+
 export function getAppVersion() {
   return chrome.runtime.getManifest().version;
 }
