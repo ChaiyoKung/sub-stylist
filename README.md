@@ -30,7 +30,18 @@ Google chrome extension that **enhance your streaming experience on popular plat
 
 ## Production
 
-1. Build in production mode
+1. Bump the version in `package.json` and `public/manifest.json` (keep both the same)
+2. Commit and tag the new release
+
+   ```bash
+   git add package.json public/manifest.json
+   git commit -m "chore: bump version vX.Y.Z"
+   git tag vX.Y.Z
+   git push origin vX.Y.Z
+   ```
+
+3. Build in production mode
+
    ```bash
    pnpm build
    ```
