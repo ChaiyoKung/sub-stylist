@@ -14,9 +14,6 @@ importers:
       '@mantine/hooks':
         specifier: ^7.2.0
         version: 7.17.8(react@18.3.1)
-      '@types/chrome':
-        specifier: ^0.0.256
-        version: 0.0.256
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -30,6 +27,9 @@ importers:
         specifier: ^3.22.4
         version: 3.25.76
     devDependencies:
+      '@types/chrome':
+        specifier: ^0.0.256
+        version: 0.0.256
       '@types/react':
         specifier: ^18.2.15
         version: 18.3.31
