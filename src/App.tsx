@@ -1,4 +1,4 @@
-import { Button, ColorPicker, InputLabel, Stack, Switch, Text } from '@mantine/core';
+import { Button, ColorPicker, Group, InputLabel, Stack, Switch, Text } from '@mantine/core';
 import { useCallback } from 'react';
 import { IoRefresh } from 'react-icons/io5';
 import { useChromeSyncStorageState } from './hooks';
@@ -64,9 +64,12 @@ export function App() {
 
   return (
     <Stack miw={containerMinWidth} p="md">
-      <Stack>
+      <Group justify="space-between" align="center">
         <Switch onLabel="On" offLabel="Off" color="green" size="md" checked={isOn} onChange={handleChangeOnOff} />
-      </Stack>
+        <Text size="xs" c="dimmed">
+          v{appVersion}
+        </Text>
+      </Group>
       <Stack gap="xs">
         <InputLabel htmlFor="text-color-picker">Text Color</InputLabel>
         <ColorPicker id="text-color-picker" format="rgba" value={style.textColor} onChange={handleChangeTextColor} />
@@ -85,9 +88,6 @@ export function App() {
           Reset
         </Button>
       </Stack>
-      <Text size="xs" c="dimmed" ta="right">
-        v{appVersion}
-      </Text>
     </Stack>
   );
 }
