@@ -4,12 +4,12 @@ import { IoRefresh } from 'react-icons/io5';
 import { useChromeSyncStorageState } from './hooks';
 import { getAppName, getAppVersion } from './libs';
 import {
-  Style,
+  type Style,
   defaultStyle,
   styleStorageKey,
   isOnStorageKey,
   defaultIsOn,
-  IsOn,
+  type IsOn,
   sendChangeStyleMessage,
 } from './modules';
 
