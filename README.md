@@ -15,9 +15,11 @@ Google chrome extension that **enhance your streaming experience on popular plat
 ## Getting Started
 
 1. Install dependencies (Recommand `pnpm`)
+
    ```bash
    pnpm install
    ```
+
 2. Running in development mode
 
    ```bash
